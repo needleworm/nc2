@@ -1,69 +1,9 @@
 """
 Robust Optimal control
-network.py
+node.py
 Byunghyun Ban
 2017.01.24.
 """
-
-
-class Network():
-    nodes = []
-    constants = {}
-
-    def __init__(self, network_file, header=True):
-        file = open(network_file)
-        if header:
-            file.readline()
-        for line in file:
-            split = line.strip().split('\t')
-            if split[1].strip() in '1 0':
-                self.constants[split[0]] = int(split[1])
-            else:
-                node = Node(split[0], equation=split[1])
-                self.nodes.append(node)
-        while self._update():
-            pass
-
-    def _update(self):
-        change = False
-        for node in self.nodes:
-            poscopy = node.equation["positive"]
-            node.equation["positive"] = []
-            for pos in poscopy:
-                mult = 1
-                if '*' in pos:
-                    mult, pos = pos.split('*')
-                    mult = int(mult)
-                if pos in self.constants:
-                    node.equation["constant"] += self.constants[pos] * mult
-                    change = True
-                else:
-                    node.equation["positive"].append(pos)
-
-            negcopy = node.equation["negative"]
-            node.equation["negative"] = []
-            for neg in negcopy:
-                mult = 1
-                if '*' in neg:
-                    mult, neg = neg.split('*')
-                    mult = int(mult)
-                if neg in self.constants:
-                    node.equation["constant"] -= self.constants[neg] * mult
-                    change = True
-                else:
-                    node.equation["negative"].append(neg)
-
-            if node.is_constant():
-                self.constants[node.name] = node.value
-                self.nodes.remove(node)
-                return True
-        return change
-
-    def find_node(self, name):
-        for node in self.nodes:
-            if node.name == name:
-                return node
-        return -1
 
 
 class Node():
@@ -114,7 +54,6 @@ class Node():
         negcount = 0
         constant = self.equation["constant"]
 
-
         for pos in self.equation['positive']:
             mult = 1
             if '*' in pos:
@@ -125,7 +64,6 @@ class Node():
             if '*' in neg:
                 mult, neg = neg.split('*')
             negcount += mult
-
 
         if constant == 0:
             if poscount == 0:
@@ -140,11 +78,4 @@ class Node():
                 self.value = 0
                 return True
         return False
-
-
-
-
-
-
-
 

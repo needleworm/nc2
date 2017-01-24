@@ -7,7 +7,7 @@ Byunghyun Ban
 
 
 
-import network as nt
+import Network as nt
 
 net = nt.Network("original.txt")
 
