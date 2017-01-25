@@ -11,8 +11,5 @@ import Network as nt
 
 net = nt.Network("original.txt")
 
-net.constants
-net.nodes
-
-
+a = net.nodes[15]
 

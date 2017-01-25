@@ -9,6 +9,8 @@ import Node as nd
 
 class Network():
     nodes = []
+    node_names = []
+    names = []
     constants = {}
 
     def __init__(self, network_file, header=True):
@@ -22,8 +24,8 @@ class Network():
             else:
                 node = nd.Node(split[0], equation=split[1])
                 self.nodes.append(node)
-        while self._update():
-            pass
+                self.names.append(node.name)
+        self.update()
 
     def _update(self):
         change = False
@@ -66,7 +68,14 @@ class Network():
                 return node
         return -1
 
+    def _update_name(self):
+        self.node_names = []
+        for node in self.nodes:
+            self.node_names.append(node.name)
 
+    def update(self):
+        while self._update():
+            self._update_name()
 
 
 
