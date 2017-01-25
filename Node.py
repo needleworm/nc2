@@ -8,7 +8,7 @@ Byunghyun Ban
 import numpy as np
 
 
-class Node():
+class Node:
     name = ""
     value = -1
     equation = {}
@@ -57,31 +57,31 @@ class Node():
     def is_constant(self):
         if self.value in (1, 0):
             return True
-        poscount = 0
-        negcount = 0
+        positive_count = 0
+        negative_count = 0
         constant = self.equation["constant"]
 
         for pos in self.equation['positive']:
-            mult = 1
+            multiply = 1
             if '*' in pos:
-                mult, pos = pos.split('*')
-            poscount += mult
+                multiply, pos = pos.split('*')
+            positive_count += multiply
         for neg in self.equation['negative']:
-            mult = 1
+            multiply = 1
             if '*' in neg:
-                mult, neg = neg.split('*')
-            negcount += mult
+                multiply, neg = neg.split('*')
+            negative_count += multiply
 
         if constant == 0:
-            if poscount == 0:
+            if positive_count == 0:
                 self.value = 0
                 return True
         elif constant > 0:
-            if constant > negcount:
+            if constant > negative_count:
                 self.value = 1
                 return True
         elif constant < 0:
-            if constant + poscount <= 0:
+            if constant + positive_count <= 0:
                 self.value = 0
                 return True
         return False
