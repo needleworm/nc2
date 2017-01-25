@@ -5,9 +5,10 @@ Byunghyun Ban
 2017.01.24.
 """
 
-import Node as nd
+import Node as Nd
 
-class Network():
+
+class Network:
     nodes = []
     node_names = []
     names = []
@@ -22,7 +23,7 @@ class Network():
             if split[1].strip() in '1 0':
                 self.constants[split[0]] = int(split[1])
             else:
-                node = nd.Node(split[0], equation=split[1])
+                node = Nd.Node(split[0], equation=split[1])
                 self.nodes.append(node)
                 self.names.append(node.name)
         self.update()
@@ -30,28 +31,28 @@ class Network():
     def _update(self):
         change = False
         for node in self.nodes:
-            poscopy = node.equation["positive"]
+            pos_copy = node.equation["positive"]
             node.equation["positive"] = []
-            for pos in poscopy:
-                mult = 1
+            for pos in pos_copy:
+                multiply = 1
                 if '*' in pos:
-                    mult, pos = pos.split('*')
-                    mult = int(mult)
+                    multiply, pos = pos.split('*')
+                    multiply = int(multiply)
                 if pos in self.constants:
-                    node.equation["constant"] += self.constants[pos] * mult
+                    node.equation["constant"] += self.constants[pos] * multiply
                     change = True
                 else:
                     node.equation["positive"].append(pos)
 
-            negcopy = node.equation["negative"]
+            neg_copy = node.equation["negative"]
             node.equation["negative"] = []
-            for neg in negcopy:
-                mult = 1
+            for neg in neg_copy:
+                multiply = 1
                 if '*' in neg:
-                    mult, neg = neg.split('*')
-                    mult = int(mult)
+                    multiply, neg = neg.split('*')
+                    multiply = int(multiply)
                 if neg in self.constants:
-                    node.equation["constant"] -= self.constants[neg] * mult
+                    node.equation["constant"] -= self.constants[neg] * multiply
                     change = True
                 else:
                     node.equation["negative"].append(neg)

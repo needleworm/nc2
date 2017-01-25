@@ -6,10 +6,7 @@ Byunghyun Ban
 """
 
 
+import Network as Nt
 
-import Network as nt
-
-net = nt.Network("original.txt")
-
-a = net.nodes[15]
+net = Nt.Network("original.txt")
 
