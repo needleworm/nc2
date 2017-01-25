@@ -9,4 +9,3 @@ Byunghyun Ban
 import Network as Nt
 
 net = Nt.Network("original.txt")
-
