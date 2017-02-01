@@ -49,6 +49,7 @@ class Node:
                         self.equation["negative"].append(node)
                     elif eq[idx-1] == '+':
                         self.equation["positive"].append(node)
+
         self._solve_equation()
 
     def __str__(self):
@@ -95,7 +96,6 @@ class Node:
         for i in range(len(self.equation["negative"])):
             if '*' in self.equation["negative"][i]:
                 neg_weight[i] *= int(self.equation["negative"][i].split('*')[0])
-
         self.pos_weight = pos_weight
         self.neg_weight = neg_weight
 
@@ -112,8 +112,8 @@ class Node:
         self._update_weight()
         self.solution_0 = []
         self.solution_1 = []
-        pos_pert_max = 2**len(self.pos_weight)
-        neg_pert_max = 2**len(self.neg_weight)
+        pos_pert_max = 2 ** len(self.pos_weight)
+        neg_pert_max = 2 ** len(self.neg_weight)
         if pos_pert_max > 0 and neg_pert_max > 0:
             for i in range(pos_pert_max):
                 for j in range(neg_pert_max):
@@ -121,7 +121,7 @@ class Node:
                     neg_perturbation = self._num_2_pert(j, len(self.neg_weight))
                     pos_sum = np.sum(self.pos_weight * pos_perturbation)
                     neg_sum = np.sum(self.neg_weight * neg_perturbation)
-                    determinant = pos_sum + neg_sum + self.equation["constant"]
+                    determinant = pos_sum - neg_sum + self.equation["constant"]
                     solution = np.hstack((pos_perturbation, neg_perturbation))
                     if determinant > 0:
                         self.solution_1.append(solution)
@@ -131,7 +131,7 @@ class Node:
             for j in range(neg_pert_max):
                 neg_perturbation = self._num_2_pert(j, len(self.neg_weight))
                 neg_sum = np.sum(self.neg_weight * neg_perturbation)
-                determinant = neg_sum + self.equation["constant"]
+                determinant = 0 - neg_sum + self.equation["constant"]
                 if determinant > 0:
                     self.solution_1.append(neg_perturbation)
                 else:
@@ -145,6 +145,7 @@ class Node:
                     self.solution_1.append(pos_perturbation)
                 else:
                     self.solution_0.append(pos_perturbation)
+
         self.solution_1 = np.array(self.solution_1, dtype="short")
         self.solution_0 = np.array(self.solution_0, dtype="short")
 
@@ -171,7 +172,6 @@ class Node:
             for i in range(len(pert_array) - 1):
                 print(pert_array[i], end=", ")
             print(pert_array[-1], end=")}\n")
-
 
 
 

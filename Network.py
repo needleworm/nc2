@@ -60,7 +60,8 @@ class Network:
             if node.is_constant():
                 self.constants[node.name] = node.value
                 self.nodes.remove(node)
-                return True
+                change = True
+            node._solve_equation()
         return change
 
     def find_node(self, name):
