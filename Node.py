@@ -112,8 +112,8 @@ class Node:
         self._update_weight()
         self.solution_0 = []
         self.solution_1 = []
-        pos_pert_max = 2**len(self.pos_weight) - 1
-        neg_pert_max = 2**len(self.neg_weight) - 1
+        pos_pert_max = 2**len(self.pos_weight)
+        neg_pert_max = 2**len(self.neg_weight)
         if pos_pert_max > 0 and neg_pert_max > 0:
             for i in range(pos_pert_max):
                 for j in range(neg_pert_max):
@@ -145,6 +145,8 @@ class Node:
                     self.solution_1.append(pos_perturbation)
                 else:
                     self.solution_0.append(pos_perturbation)
+        self.solution_1 = np.array(self.solution_1, dtype="short")
+        self.solution_0 = np.array(self.solution_0, dtype="short")
 
     def solutions(self, value):
         if value == 1:
