@@ -158,7 +158,7 @@ class Node:
 
     def _array_printer(self, pert_array):
         node_array = np.hstack((self.equation["positive"], self.equation["negative"]))
-        print(end="(")
+        print(end="{(")
         if len(node_array) == 1:
             print (node_array[0], end=") = (")
         else:
@@ -166,11 +166,11 @@ class Node:
                 print(node_array[i], end=", ")
             print(node_array[-1], end=") = (")
         if len(pert_array) == 1:
-            print(pert_array[0], end=")\n")
+            print(pert_array[0], end=")}\n")
         else:
             for i in range(len(pert_array) - 1):
                 print(pert_array[i], end=", ")
-            print(pert_array[-1], end=")\n")
+            print(pert_array[-1], end=")}\n")
 
 
 
