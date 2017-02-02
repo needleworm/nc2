@@ -26,7 +26,7 @@ class Network:
                 node = Nd.Node(split[0], equation=split[1])
                 self.nodes.append(node)
                 self.names.append(node.name)
-        self.update()
+        self._update()
 
     def _update(self):
         change = False
@@ -75,7 +75,7 @@ class Network:
         for node in self.nodes:
             self.node_names.append(node.name)
 
-    def update(self):
+    def _update(self):
         while self._update():
             self._update_name()
 

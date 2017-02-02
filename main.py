@@ -4,12 +4,11 @@ Equation Solver
 Byunghyun Ban
 2017.01.24.
 """
-
-
+import time
 import Network as Nt
 
+start = time.time()
 net = Nt.Network("original.txt")
-
 apoptosis = net.find_node("Apoptosis")
 
 caspase8 = net.find_node("Caspase8")
@@ -52,3 +51,6 @@ wnt = net.find_node("WNT")
 gli = net.find_node("Gli")
 
 tak1 = net.find_node("TAK1")
+
+end = time.time() - start
+print (end)
