@@ -26,3 +26,29 @@ bak = net.find_node("Bak")
 akt = net.find_node("AKT")
 bcl2 = net.find_node("Bcl2")
 bclxl = net.find_node("BclXL")
+
+mdm2 = net.find_node("Mdm2")
+chk12 = net.find_node("CHK1/2")
+
+pip3 = net.find_node("PIP3")
+
+nfkb = net.find_node("NFkB")
+
+atmatr = net.find_node("ATM/ATR")
+pi3k = net.find_node("PI3K")
+p53pten = net.find_node("p53/PTEN")
+
+ras = net.find_node("Ras")
+
+ikk = net.find_node("IKK")
+snail = net.find_node("Snail")
+ecadh = net.find_node("Ecadh")
+
+rtk = net.find_node("RTK")
+nf1 = net.find_node("NF1")
+
+pkc = net.find_node("PKC")
+wnt = net.find_node("WNT")
+gli = net.find_node("Gli")
+
+tak1 = net.find_node("TAK1")
