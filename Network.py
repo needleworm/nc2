@@ -28,7 +28,7 @@ class Network:
                 self.names.append(node.name)
         self._update()
 
-    def _update(self):
+    def __update(self):
         change = False
         for node in self.nodes:
             pos_copy = node.equation["positive"]
@@ -76,7 +76,7 @@ class Network:
             self.node_names.append(node.name)
 
     def _update(self):
-        while self._update():
+        while self.__update():
             self._update_name()
 
 

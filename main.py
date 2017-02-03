@@ -52,5 +52,7 @@ gli = net.find_node("Gli")
 
 tak1 = net.find_node("TAK1")
 
+slug = net.find_node("Slug")
+
 end = time.time() - start
 print (end)
