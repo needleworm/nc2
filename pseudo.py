@@ -1,2 +1,1 @@
 class node:
-aa
