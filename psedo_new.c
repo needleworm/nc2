@@ -12,7 +12,7 @@ ADT Converging_Tree{
                                                   make all S as children of ct;
                                                 return ct;
         Cv_Tree cascade(ct, ct_2, SBL)      ::= if ct_2 is a subtree of ct
-                                                  make SBL as siblings of ct_2
+                                                  make SBL as siblings of ct_2;
                                                   remove all subtrees whose level is higher than ct_2.level;
                                                   remove ct_2 from ct;
                                                 return ct;
