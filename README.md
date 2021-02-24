@@ -1,4 +1,6 @@
-# nc2
+Choo, S. M., Ban, B., Joo, J. I., & Cho, K. H. (2018). The phenotype control kernel of a biomolecular regulatory network. BMC systems biology, 12(1), 1-15.
+
+
 robust optimal control
 
 
